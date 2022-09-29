@@ -1,10 +1,13 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-import { COLORS, WEIGHTS } from "../../constants";
+import { COLORS, devices, WEIGHTS } from "../../constants";
 import Logo from "../Logo";
 import SuperHeader from "../SuperHeader";
 import MobileMenu from "../MobileMenu";
+import { HamburgerButton } from "../Buttons/Hamburger";
+import { SearchButton } from "../Buttons/SearchButton";
+import { ShoppingButton } from "../Buttons/ShoppingButton";
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -30,6 +33,11 @@ const Header = () => {
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
+        <MobileNav>
+          <ShoppingButton />
+          <SearchButton />
+          <HamburgerButton onClick={() => setShowMobileMenu(true)} />
+        </MobileNav>
         <Side />
       </MainHeader>
 
@@ -41,6 +49,17 @@ const Header = () => {
   );
 };
 
+const Nav = styled.nav`
+  display: flex;
+  gap: 48px;
+  margin: 0px 48px;
+`;
+
+const MobileNav = styled(Nav)`
+  gap: 20px;
+  align-items: center;
+`;
+
 const MobileDecorativeLine = styled.div`
   height: 4px;
   width: 100%;
@@ -49,16 +68,14 @@ const MobileDecorativeLine = styled.div`
 
 const MainHeader = styled.div`
   display: flex;
-  align-items: baseline;
+  align-items: center;
   padding: 18px 32px;
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
-`;
 
-const Nav = styled.nav`
-  display: flex;
-  gap: 48px;
-  margin: 0px 48px;
+  ${devices.mobile} {
+    padding: 18px 16px;
+  }
 `;
 
 const Side = styled.div`
@@ -74,6 +91,10 @@ const NavLink = styled.a`
 
   &:first-of-type {
     color: ${COLORS.secondary};
+  }
+
+  ${devices.tablet} {
+    display: none;
   }
 `;
 

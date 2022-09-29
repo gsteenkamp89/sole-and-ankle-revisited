@@ -18,7 +18,7 @@ export const WEIGHTS = {
 };
 
 export const breakpoints = {
-  phone: {
+  mobile: {
     px: 600,
     rem: 37.5,
   },
@@ -33,7 +33,7 @@ export const breakpoints = {
 };
 
 export const devices = {
-  phone: `@media (max-width: ${breakpoints.phone.rem}rem)`,
+  mobile: `@media (max-width: ${breakpoints.mobile.rem}rem)`,
   tablet: `@media (max-width: ${breakpoints.tablet.rem}rem)`,
   desktop: `@media (max-width: ${breakpoints.desktop.rem}rem)`,
 };
